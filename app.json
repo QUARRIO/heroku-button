@@ -5,6 +5,6 @@
     "addons": ["heroku-postgresql","quarrio-app"],
     "scripts":
     {
-      "postdeploy":"./postdeploy.sh"
+      "postdeploy": "echo $DATABASE_URL"
     }
 }
