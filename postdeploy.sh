@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "This is just postdeploy test"
+echo "The value for DB is: $DATABASE_URL"
