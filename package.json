@@ -6,20 +6,21 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "csv-parse": "5.3.5",
+    "fast-csv": "4.3.6",
+    "lodash": "^4.17.21",
     "pg": "^8.9.0",
     "pg-format": "^1.0.4",
-    "fast-csv": "4.3.6",
-    "csv-parse": "5.3.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node joel/main.js",
-    "build": "node joel/main.js",
-    "test": "node joel/main.js",
-    "eject": "node joel/main.js"
+    "start": "node main.js",
+    "build": "node main.js",
+    "test": "node main.js",
+    "eject": "node main.js"
   },
   "eslintConfig": {
     "extends": [
