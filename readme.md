@@ -1,7 +1,7 @@
 [![Deploy](quarrio.png "Intelligence Begins With a Question")](https://heroku.com/deploy?template=https://github.com/QUARRIO/heroku-button.git)
 
 
-# Getting Started with Quarrio on Heroku
+## Getting Started with Quarrio on Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png "Easily deploy Quarrio on Heroku, click here!")](https://heroku.com/deploy?template=https://github.com/QUARRIO/heroku-button.git)
 
