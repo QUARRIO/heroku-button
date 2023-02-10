@@ -1,7 +1,20 @@
+const fs = require("fs");
+const { parse } = require("csv-parse");
 const { Client } = require('pg');
 
-var format = require('pg-format');
-
+/*
+fs.createReadStream("./joel/tables/account.csv")
+  .pipe(parse({ delimiter: ",", from_line: 2 }))
+  .on("data", function (row) {
+    console.log(row);
+  })
+  .on("end", function () {
+    console.log("finished");
+  })
+  .on("error", function (error) {
+    console.log(error.message);
+  });
+*/
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -12,27 +25,22 @@ const client = new Client({
 
 client.connect();
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+client.query('CREATE TABLE account2( ACCOUNTSOURCE VARCHAR(255), ACTIVE__C VARCHAR(255), ANNUALREVENUE VARCHAR(255), BILLINGCITY VARCHAR(255), BILLINGADDRESS VARCHAR(255), YEARSTARTED VARCHAR(255));', (err, res) => {
   if (err) throw err;
   for (let row of res.rows) {
     console.log(JSON.stringify(row));
   }
 });
 
-client.query('CREATE TABLE UsersTest (email varchar, firstName varchar, lastName varchar, age int);', (err, res) => {
-  console.log(err);
-  console.log(res);
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+//});
+
+  client.end();
 
 });
 
 
-var values = [
-  ['johndoe@gmail.com', 'john', 'doe', '21']
-];
-
-client.query(format('INSERT INTO UsersTest (email, firstName, lastName, age) VALUES %L', values),[], (err, res)=>{
-  console.log(err);
-  console.log(res);
-
-    client.end();
-});
