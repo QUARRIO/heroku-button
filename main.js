@@ -9,9 +9,19 @@ const dbClient = new Client({
   }
 });
 
-dbClient.connect();
+
+dbClient.connect((err) => {
+    if (err) {
+      console.error('connection error', err.stack)
+    } else {
+      console.log('connected')
+    }
+});
 
 var sql = fs.readFileSync("./demo.sql", "utf8");
-dbClient.query(sql);
 
-dbClient.end();
+dbClient.query(sql, (err, res) => {
+    if (err) throw err
+    console.log(res)
+    dbClient.end()
+  })
