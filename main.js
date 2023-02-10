@@ -1,5 +1,7 @@
+const express = require('express')
 const { Client } = require('pg');
 const fs = require("fs");
+
 
 console.log('process.env.DATABASE_URL --------- ', process.env.DATABASE_URL);
 const dbClient = new Client({
@@ -26,14 +28,17 @@ dbClient.query(sql, (err, res) => {
     dbClient.end()
   })
 
-//////////
-"use strict";
-const express = require("express");
-const app = express();
-app.get("/", (req, res) => {
-    res.type("text");
-    res.send("Hello! From Quarrio!");
-});
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT);
+
+console.log("Running the app")
+
+const app = express()
+const PORT = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+    res.send('Hello from Quarrio!')
+})
+
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
+})
