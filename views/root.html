@@ -20,10 +20,21 @@
         <div class="mui-col-md-4 mui-col-md-offset-4">
           <div class="mui-panel" style="padding: 10px; margin-top: 35%">
             <p class="mui--text-display1">Complete signup</p>
-            <br />
 
+            <div
+              id="alertRef"
+              style="
+                margin-top: 10px;
+                margin-bottom: 10px;
+                background-color: cadetblue;
+                padding: 10px;
+                color: aliceblue;
+                display: none;
+              "
+            ></div>
             <div style="align-content: center">
               <!-- <form> -->
+
               <div>
                 <label>Full name</label>
                 <input
@@ -69,6 +80,7 @@
     const fullnameRef = document.getElementById("fullname");
     const emailRef = document.getElementById("email");
     const buttonRef = document.getElementById("submitBtn");
+    const alertRef = document.getElementById("alertRef");
 
     fullnameRef.addEventListener("change", (e) => {
       data["fullName"] = e.target.value;
@@ -81,6 +93,24 @@
     buttonRef.addEventListener("click", (e) => {
       e.preventDefault();
       console.log(e, data);
+
+      fetch(
+        window.location.protocol +
+          "//" +
+          window.location.host +
+          "/complete-signup",
+        {
+          method: "POST", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      ).then((res) => {
+        console.log();
+        alertRef.style.display = "block";
+        alertRef.innerHTML = "Your signup is complete please check your email";
+      });
     });
   </script>
 </html>
