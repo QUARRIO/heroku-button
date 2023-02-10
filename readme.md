@@ -1,17 +1,15 @@
 [![Deploy](quarrio.png "Intelligence Begins With a Question")](https://heroku.com/deploy?template=https://github.com/QUARRIO/heroku-button.git)
 
 
-## Getting Started with Quarrio on Heroku
+# Getting Started with Quarrio on Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png "Easily deploy Quarrio on Heroku, click here!")](https://heroku.com/deploy?template=https://github.com/QUARRIO/heroku-button.git)
 
----
 
 - <b>Intelligence Begins With a Question</b>
 Quarrio puts the power of information at your fingertips in seconds. Interact with data by simply asking questions and having conversations. Faster decisions, easier access to information, less time wasted waiting.
 
-
-
+  
 - <b>Save Time with Conversations</b>
 Leverage the power of language to get information. Ask questions and get charts, tables and information – in seconds.
 
