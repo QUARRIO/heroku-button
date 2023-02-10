@@ -79,7 +79,7 @@ const saveData = async (table, headings, csvData) => {
 
 const run = async () => {
   client.connect();
-  const tables = ["account", "contact", "lead", "opp", "user"];
+  const tables = ["account", "contact", "lead", "opp", "users"];
   for (let table of tables) {
     try {
       console.log('table >>> ', table);
