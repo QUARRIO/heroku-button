@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+![Quarrio](img.png "Intelligence Begins With a Question")
+
+# Getting Started with Quarrio on Heroku
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
