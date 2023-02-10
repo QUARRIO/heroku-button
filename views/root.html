@@ -23,29 +23,29 @@
             <br />
 
             <div style="align-content: center">
-              <form>
-                <div>
-                  <label>Full name</label>
-                  <input
-                    id="fullname"
-                    name="fullname"
-                    class="mui-textfield mui-textfield--float-label"
-                    style="width: 100%"
-                  />
-                </div>
-                <div>
-                  <label>Email</label>
-                  <input
-                    id="email"
-                    name="email"
-                    class="mui-textfield mui-textfield--float-label"
-                    style="width: 100%"
-                  />
-                </div>
-                <button id="submitBtn" class="mui-btn mui-btn--raised">
-                  Submit
-                </button>
-              </form>
+              <!-- <form> -->
+              <div>
+                <label>Full name</label>
+                <input
+                  id="fullname"
+                  name="fullname"
+                  class="mui-textfield mui-textfield--float-label"
+                  style="width: 100%"
+                />
+              </div>
+              <div>
+                <label>Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  class="mui-textfield mui-textfield--float-label"
+                  style="width: 100%"
+                />
+              </div>
+              <button id="submitBtn" class="mui-btn mui-btn--raised">
+                Submit
+              </button>
+              <!-- </form> -->
             </div>
           </div>
         </div>
@@ -53,13 +53,16 @@
     </div>
   </body>
   <script>
-    var search = location.search.substring(1);
-    const queryParmsObj = JSON.parse(
-      '{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
-      function (key, value) {
-        return key === "" ? value : decodeURIComponent(value);
-      }
-    );
+    // var search = location.search.substring(1);
+    // const queryParmsObj = JSON.parse(
+    //   '{"' + search.replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+    //   function (key, value) {
+    //     return key === "" ? value : decodeURIComponent(value);
+    //   }
+    // );
+    const url = new URL(window.location);
+    const queryParmsObj = Object.fromEntries(new URLSearchParams(url.search));
+
     // if(Object.)
 
     var data = { email: "", fullName: "", ...queryParmsObj };
@@ -76,6 +79,7 @@
     });
 
     buttonRef.addEventListener("click", (e) => {
+      e.preventDefault();
       console.log(e, data);
     });
   </script>
