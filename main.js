@@ -12,4 +12,4 @@ const dbClient = new Client({
 dbClient.connect();
 
 var sql = fs.readFileSync("./demo.sql", "utf8");
-await dbClient.query(sql);
+dbClient.query(sql);
