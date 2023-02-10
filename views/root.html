@@ -42,7 +42,7 @@
                     style="width: 100%"
                   />
                 </div>
-                <button id="handle" class="mui-btn mui-btn--raised">
+                <button id="submitBtn" class="mui-btn mui-btn--raised">
                   Submit
                 </button>
               </form>
@@ -65,7 +65,7 @@
     var data = { email: "", fullName: "", ...queryParmsObj };
     const fullnameRef = document.getElementById("fullname");
     const emailRef = document.getElementById("email");
-    const buttonRef = document.getElementById("email");
+    const buttonRef = document.getElementById("submitBtn");
 
     fullnameRef.addEventListener("change", (e) => {
       data["fullName"] = e.target.value;
@@ -76,7 +76,7 @@
     });
 
     buttonRef.addEventListener("click", (e) => {
-      console.log(data);
+      console.log(e, data);
     });
   </script>
 </html>
