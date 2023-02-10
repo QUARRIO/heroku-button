@@ -1,9 +1,12 @@
 const express = require('express')
 const { Client } = require('pg');
 const fs = require("fs");
+var parseDbUrl = require("parse-database-url");
 
+var dbConfig = parseDbUrl(process.env["DATABASE_URL"]);
 
 console.log('process.env.DATABASE_URL --------- ', process.env.DATABASE_URL);
+
 const dbClient = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -28,17 +31,7 @@ dbClient.query(sql, (err, res) => {
     dbClient.end()
   })
 
-
-
-console.log("Running the app")
-
-const app = express()
-const PORT = process.env.PORT || 3000
-
-app.get('/', (req, res) => {
-    res.send('Hello from Quarrio!')
-})
-
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`)
-})
+console.log('DB_USERNAME:', dbConfig['user']);
+console.log('DB_PASSWORD:', dbConfig['password']);
+console.log('DB_HOST:', dbConfig['host']);
+console.log('DB_NAME:', dbConfig['database']);
