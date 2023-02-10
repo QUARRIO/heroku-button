@@ -4,7 +4,7 @@ const hostname = "127.0.0.1";
 const port = 3000;
 const app = express();
 
-// const { initiatDatabase } = require("./config/pg");
+const { initiatDatabase } = require("./config/pg");
 app.get("/", (req, res) => {
   res.sendFile("views/root.html", { root: __dirname });
 });
