@@ -1,0 +1,9 @@
+{
+  "name": "Quarrio",
+  "description": "Quarrio puts the power of information at your fingertips in seconds. Interact with data by simply asking questions and having conversations.",
+  "stack": "heroku-20",
+  "addons": ["heroku-postgresql", "quarrio-app"],
+  "scripts": {
+    "postdeploy": "echo $DATABASE_URL"
+  }
+}
