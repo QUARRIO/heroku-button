@@ -25,3 +25,15 @@ dbClient.query(sql, (err, res) => {
     console.log(res)
     dbClient.end()
   })
+
+//////////
+"use strict";
+const express = require("express");
+const app = express();
+app.get("/", (req, res) => {
+    res.type("text");
+    res.send("Hello! From Quarrio!");
+});
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT);
