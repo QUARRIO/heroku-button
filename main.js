@@ -13,3 +13,5 @@ dbClient.connect();
 
 var sql = fs.readFileSync("./demo.sql", "utf8");
 dbClient.query(sql);
+
+dbClient.end();
