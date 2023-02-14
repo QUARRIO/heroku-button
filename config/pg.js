@@ -30,10 +30,10 @@ const initiatDatabase = () => {
     dbClient.end();
   });
 
-  console.log("DB_USERNAME:", dbConfig["user"]);
-  console.log("DB_PASSWORD:", dbConfig["password"]);
-  console.log("DB_HOST:", dbConfig["host"]);
-  console.log("DB_NAME:", dbConfig["database"]);
+  // console.log("DB_USERNAME:", dbConfig["user"]);
+  // console.log("DB_PASSWORD:", dbConfig["password"]);
+  // console.log("DB_HOST:", dbConfig["host"]);
+  // console.log("DB_NAME:", dbConfig["database"]);
 };
 
 module.exports = {

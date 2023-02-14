@@ -1,11 +1,17 @@
 const express = require("express");
+var path = require("path");
 const port = process.env.PORT || 3000;
-const app = express();
 var parseDbUrl = require("parse-database-url");
 const axios = require("axios");
+require("dotenv").config();
+const app = express();
 
+console.log(process.env.DATABASE_URL);
 var bodyParser = require("body-parser");
 // parse application/x-www-form-urlencoded
+app.use(express.static(__dirname + "/public"));
+// app.use("/public", express.static(path.join(__dirname, "public")));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
