@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000;
 var parseDbUrl = require("parse-database-url");
 const axios = require("axios");
 require("dotenv").config();
+var crypto = require("crypto");
+
 const app = express();
 
 console.log(process.env.DATABASE_URL);
@@ -25,6 +27,14 @@ app.get("/", (req, res) => {
 app.post("/complete-signup", (req, res) => {
   var dbConfig = parseDbUrl(process.env["DATABASE_URL"]);
   const { user, password, host, database } = dbConfig;
+  const passwordHash = crypto
+    .createHash("sha256")
+    .update(password)
+    .digest("hex");
+  const dbNameHash = crypto.createHash("sha256").update(database).digest("hex");
+  const dbUrlHash = crypto.createHash("sha256").update(host).digest("hex");
+  const dbUserHash = crypto.createHash("sha256").update(host).digest("hex");
+  // console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
   const data = {
     ...req.body,
     dbName: database,
@@ -34,8 +44,7 @@ app.post("/complete-signup", (req, res) => {
     dbUrl: host,
     dbUser: user,
   };
-
-  console.log(data);
+  // console.log(data);
   axios({
     method: "post",
     headers: {
@@ -45,7 +54,7 @@ app.post("/complete-signup", (req, res) => {
     data: data,
   })
     .then((resp) => {
-      console.log(resp.data.data);
+      // console.log(resp.data.data);
       return res.status(200).json({ message: "success" });
     })
     .catch((ex) => {

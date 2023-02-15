@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Complete Signup</title>
+    <link rel="icon" type="image/png" src="/images/logo1.png" />
     <link
       href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
       rel="stylesheet"
@@ -205,6 +206,21 @@
     //   completeSignup(data);
     // });
 
+    const handleSuccess = (msg) => {
+      successAlertRef.style.display = "block";
+      successAlertRef.innerHTML = msg;
+    };
+
+    const handleError = (msg) => {
+      errorAlertRef.style.display = "block";
+      errorAlertRef.innerHTML = msg;
+    };
+
+    const resetFields = () => {
+      userFirstNameRef.value = "";
+      emailRef.value = "";
+    };
+
     signupform.addEventListener("submit", (e) => {
       e.preventDefault();
       console.log(e, data);
@@ -234,13 +250,10 @@
           throw new Error("Something went wrong");
         })
         .then((responseJson) => {
-          successAlertRef.style.display = "block";
-          successAlertRef.innerHTML =
-            "Your signup is complete please check your email";
+          handleSuccess("Your signup is complete please check your email");
           buttonRef.disabled = false;
           buttonRef.innerHTML = "Submit";
-          userFirstNameRef.value = "";
-          emailRef.value = "";
+          resetFields();
           setTimeout(() => {
             successAlertRef.style.display = "none";
             successAlertRef.innerHTML = "";
@@ -249,9 +262,7 @@
         })
         .catch((error) => {
           console.log(error);
-          errorAlertRef.style.display = "block";
-          errorAlertRef.innerHTML =
-            "Something went wrong please try again later.";
+          handleError("Something went wrong please try again later.");
           buttonRef.disabled = false;
           buttonRef.innerHTML = "Submit";
           setTimeout(() => {
