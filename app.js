@@ -41,7 +41,7 @@ app.post("/complete-signup", (req, res) => {
   const dbUserHash = encrypt(host);
   // console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
   const accessToken =
-    "eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjo0LCJmaXJzdF9uYW1lIjoia2hhbGlkIiwiZW1haWwiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJzdWIiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJpYXQiOjE2NzY0NDE4MjAsImV4cCI6MTY4NTA4MTgyMH0.p1D0HrEhj7YjGF9Cxcuu6CEy671Dmmdzy1V9xX8X1EijqgcVlBtBAW0ZmCShWG4dcwwuFMIblYhAJGxqHYpfrQ";
+    "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJmaXJzdF9uYW1lIjoia2hhbGlkIiwiZW1haWwiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJzdWIiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJpYXQiOjE2NzY1NDg5MjQsImV4cCI6MTY4NTE4ODkyNH0.a-rv-pQnCErfB2YrdMcRumjIvYYyKKypzII0aRi97sM";
 
   const data = {
     ...req.body,
