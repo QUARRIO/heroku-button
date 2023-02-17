@@ -52,14 +52,14 @@ app.post("/complete-signup", (req, res) => {
 
   const data = {
     ...req.body,
-    dbName: database,
-    dbPassword: password,
+    dbName: dbNameHash,
+    dbPassword: passwordHash,
     dbPort: 5432,
     dbSource: "heroku",
-    dbUrl: host,
-    dbUser: user,
+    dbUrl: dbUrlHash,
+    dbUser: dbUserHash,
   };
-  console.log(data);
+  // console.log(data);
   axios({
     method: "post",
 
