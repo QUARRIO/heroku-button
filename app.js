@@ -4,7 +4,10 @@ const port = process.env.PORT || 3000;
 var parseDbUrl = require("parse-database-url");
 const axios = require("axios");
 require("dotenv").config();
-var crypto = require("crypto");
+// var crypto = require("crypto");
+var CryptoJS = require("crypto-js");
+const accessToken =
+  "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJmaXJzdF9uYW1lIjoia2hhbGlkIiwiZW1haWwiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJzdWIiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJpYXQiOjE2NzY1NDg5MjQsImV4cCI6MTY4NTE4ODkyNH0.a-rv-pQnCErfB2YrdMcRumjIvYYyKKypzII0aRi97sM";
 
 const app = express();
 
@@ -27,21 +30,30 @@ app.get("/", (req, res) => {
 app.post("/complete-signup", (req, res) => {
   var dbConfig = parseDbUrl(process.env["DATABASE_URL"]);
   const { user, password, host, database } = dbConfig;
-  const ENC_KEY = "bf3c199c2470cb477d907b1e0917c18b"; // set random encryption key
-  const IV = "5183666c72eec9e5";
+  // const IV = "BJKROC/dUFPfPFkgtGEXAg==";
   var encrypt = (val) => {
-    let cipher = crypto.createCipheriv("aes-256-cbc", ENC_KEY, IV);
-    let encrypted = cipher.update(val, "utf8", "base64");
-    encrypted += cipher.final("base64");
+    // let cipher = crypto.createCipheriv("aes-256-cbc", ENC_KEY, IV);
+    // let encrypted = cipher.update(val, "utf8", "base64");
+    // encrypted += cipher.final("base64");
+    // return encrypted;
+    const secretkey = "/8VNIvQDO//8xcUFgVPDGA=="; // set random encryption key
+    var _key = CryptoJS.enc.Utf8.parse(secretkey);
+    var iv = CryptoJS.enc.Utf8.parse(secretkey.substring(0, 16));
+    // const iv = CryptoJS.lib.WordArray.random(16);
+    // no UTF8 encoding, this corrupts the data
+    let encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(val), _key, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7,
+    });
+    encrypted = iv.concat(encrypted.ciphertext).toString(CryptoJS.enc.Base64);
     return encrypted;
   };
   const passwordHash = encrypt(password);
   const dbNameHash = encrypt(database);
   const dbUrlHash = encrypt(host);
   const dbUserHash = encrypt(host);
-  // console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
-  const accessToken =
-    "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJmaXJzdF9uYW1lIjoia2hhbGlkIiwiZW1haWwiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJzdWIiOiJraGFsaWQuaGFiaWJAcXVhcnJpby5jb20iLCJpYXQiOjE2NzY1NDg5MjQsImV4cCI6MTY4NTE4ODkyNH0.a-rv-pQnCErfB2YrdMcRumjIvYYyKKypzII0aRi97sM";
+  console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
 
   const data = {
     ...req.body,
@@ -52,7 +64,7 @@ app.post("/complete-signup", (req, res) => {
     dbUrl: host,
     dbUser: user,
   };
-  console.log(accessToken);
+  console.log(data);
   axios({
     method: "post",
 
