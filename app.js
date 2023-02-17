@@ -47,7 +47,7 @@ app.post("/complete-signup", (req, res) => {
   const passwordHash = encrypt(password);
   const dbNameHash = encrypt(database);
   const dbUrlHash = encrypt(host);
-  const dbUserHash = encrypt(host);
+  const dbUserHash = encrypt(user);
   // console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
 
   const data = {
