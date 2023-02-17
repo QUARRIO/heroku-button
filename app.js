@@ -32,15 +32,10 @@ app.post("/complete-signup", (req, res) => {
   const { user, password, host, database } = dbConfig;
   // const IV = "BJKROC/dUFPfPFkgtGEXAg==";
   var encrypt = (val) => {
-    // let cipher = crypto.createCipheriv("aes-256-cbc", ENC_KEY, IV);
-    // let encrypted = cipher.update(val, "utf8", "base64");
-    // encrypted += cipher.final("base64");
-    // return encrypted;
     const secretkey = "/8VNIvQDO//8xcUFgVPDGA=="; // set random encryption key
     var _key = CryptoJS.enc.Utf8.parse(secretkey);
     var iv = CryptoJS.enc.Utf8.parse(secretkey.substring(0, 16));
-    // const iv = CryptoJS.lib.WordArray.random(16);
-    // no UTF8 encoding, this corrupts the data
+
     let encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(val), _key, {
       iv: iv,
       mode: CryptoJS.mode.CBC,
@@ -53,7 +48,7 @@ app.post("/complete-signup", (req, res) => {
   const dbNameHash = encrypt(database);
   const dbUrlHash = encrypt(host);
   const dbUserHash = encrypt(host);
-  console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
+  // console.log({ passwordHash, dbNameHash, dbUrlHash, dbUserHash });
 
   const data = {
     ...req.body,
