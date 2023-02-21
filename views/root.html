@@ -5,59 +5,167 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Complete Signup</title>
+    <link rel="icon" type="image/png" src="/images/logo1.png" />
     <link
       href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
       rel="stylesheet"
       type="text/css"
     />
-    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+    <!-- <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script> -->
+    <style>
+      .appbar {
+        background-color: rgb(255, 255, 255);
+        transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px,
+          rgb(0 0 0 / 14%) 0px 4px 5px 0px, rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        /* position: fixed; */
+        top: 0px;
+        left: auto;
+        right: 0px;
+        color: inherit;
+        z-index: 1201;
+        height: 55px;
+      }
+      .box {
+        background-color: rgb(255, 255, 255);
+        color: rgba(0, 0, 0, 0.87);
+        transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        border-radius: 4px;
+        box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+          rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+      }
+      .custom-btn {
+        text-transform: uppercase;
+        min-width: 64px;
+        /* padding: 6px 16px; */
+        border-radius: 4px;
+
+        color: rgb(255, 255, 255);
+        background-color: rgb(211, 47, 47);
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div class="mui-appbar"></div>
+    <!-- <div class="appbar">
+      <div>
+        <img src="images/logo.png" />
+      </div>
+    </div> -->
 
     <div class="mui-container-fluid">
       <div class="mui-row">
         <div class="mui-col-md-4 mui-col-md-offset-4">
-          <div class="mui-panel" style="padding: 10px; margin-top: 35%">
-            <p class="mui--text-display1">Complete signup</p>
+          <div
+            class="mui-panel box"
+            style="padding: 30px 20px; margin-top: 35%"
+          >
+            <div>
+              <form id="signupform">
+                <div
+                  style="
+                    /* padding: 24px; */
+                    /* margin-top: 64px; */
+                    display: flex;
+                    flex-direction: column;
+                    -webkit-box-align: center;
+                    align-items: center;
+                  "
+                >
+                  <img src="images/logo1.png" width="40" height="50" />
+                  <p
+                    style="
+                      margin: 0px;
+                      font-family: Roboto, Helvetica, Arial, sans-serif;
+                      font-weight: 400;
+                      font-size: 1.5rem;
+                      line-height: 1.334;
+                      letter-spacing: 0em;
+                    "
+                  >
+                    Complete signup
+                  </p>
+                </div>
+                <div
+                  id="successAlertRef"
+                  style="
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    background-color: #2f7c31;
+                    border-radius: 4px;
+                    padding: 10px;
+                    color: aliceblue;
+                    display: none;
+                  "
+                ></div>
+                <div
+                  id="errorAlertRef"
+                  style="
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    border-radius: 4px;
 
-            <div
-              id="alertRef"
-              style="
-                margin-top: 10px;
-                margin-bottom: 10px;
-                background-color: cadetblue;
-                padding: 10px;
-                color: aliceblue;
-                display: none;
-              "
-            ></div>
-            <div style="align-content: center">
-              <!-- <form> -->
-
-              <div>
-                <label>Full name</label>
-                <input
-                  id="fullname"
-                  name="fullname"
-                  class="mui-textfield mui-textfield--float-label"
-                  style="width: 100%"
-                />
-              </div>
-              <div>
-                <label>Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  class="mui-textfield mui-textfield--float-label"
-                  style="width: 100%"
-                />
-              </div>
-              <button id="submitBtn" class="mui-btn mui-btn--raised">
-                Submit
-              </button>
-              <!-- </form> -->
+                    background-color: #d32f2f;
+                    padding: 10px;
+                    color: aliceblue;
+                    display: none;
+                  "
+                ></div>
+                <div>
+                  <label>Name</label>
+                  <input
+                    id="userFirstName"
+                    type="text"
+                    required
+                    name="userFirstName"
+                    class="mui-textfield mui-textfield--float-label input"
+                    style="width: -webkit-fill-available; padding: 8.5px 14px"
+                  />
+                </div>
+                <div>
+                  <label>Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    name="email"
+                    class="mui-textfield mui-textfield--float-label input"
+                    style="width: -webkit-fill-available; padding: 8.5px 14px"
+                  />
+                </div>
+                <button
+                  id="submitBtn"
+                  type="submit"
+                  class="mui-btn mui-btn--raised custom-btn"
+                >
+                  Submit <span class="loader"></span>
+                </button>
+              </form>
             </div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <div style="text-align: center">
+            <p
+              class="MuiTypography-root MuiTypography-body2 MuiTypography-alignCenter css-rdifmp"
+            >
+              © 2015 - 2023
+              <a href="https://www.quarrio.com/">Quarrio</a>. All rights
+              reserved.
+            </p>
           </div>
         </div>
       </div>
@@ -76,13 +184,15 @@
 
     // if(Object.)
 
-    var data = { email: "", fullName: "", ...queryParmsObj };
-    const fullnameRef = document.getElementById("fullname");
+    var data = { email: "", ...queryParmsObj };
+    const userFirstNameRef = document.getElementById("userFirstName");
+    const signupform = document.getElementById("signupform");
     const emailRef = document.getElementById("email");
     const buttonRef = document.getElementById("submitBtn");
-    const alertRef = document.getElementById("alertRef");
+    const successAlertRef = document.getElementById("successAlertRef");
+    const errorAlertRef = document.getElementById("errorAlertRef");
 
-    fullnameRef.addEventListener("change", (e) => {
+    userFirstNameRef.addEventListener("change", (e) => {
       data["userFirstName"] = e.target.value;
     });
 
@@ -90,10 +200,36 @@
       data["email"] = e.target.value;
     });
 
-    buttonRef.addEventListener("click", (e) => {
+    // buttonRef.addEventListener("click", (e) => {
+    //   e.preventDefault();
+    //   console.log(e, data);
+    //   completeSignup(data);
+    // });
+
+    const handleSuccess = (msg) => {
+      successAlertRef.style.display = "block";
+      successAlertRef.innerHTML = msg;
+    };
+
+    const handleError = (msg) => {
+      errorAlertRef.style.display = "block";
+      errorAlertRef.innerHTML = msg;
+    };
+
+    const resetFields = () => {
+      userFirstNameRef.value = "";
+      emailRef.value = "";
+    };
+
+    signupform.addEventListener("submit", (e) => {
       e.preventDefault();
       console.log(e, data);
+      completeSignup(data);
+    });
 
+    const completeSignup = (data) => {
+      buttonRef.disabled = true;
+      buttonRef.innerHTML = "Please wait...";
       fetch(
         window.location.protocol +
           "//" +
@@ -106,11 +242,34 @@
           },
           body: JSON.stringify(data),
         }
-      ).then((res) => {
-        console.log();
-        alertRef.style.display = "block";
-        alertRef.innerHTML = "Your signup is complete please check your email";
-      });
-    });
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error("Something went wrong");
+        })
+        .then((responseJson) => {
+          handleSuccess("Your signup is complete please check your email");
+          buttonRef.disabled = false;
+          buttonRef.innerHTML = "Submit";
+          resetFields();
+          setTimeout(() => {
+            successAlertRef.style.display = "none";
+            successAlertRef.innerHTML = "";
+          }, 5000);
+          // Do something with the response
+        })
+        .catch((error) => {
+          console.log(error);
+          handleError("Something went wrong please try again later.");
+          buttonRef.disabled = false;
+          buttonRef.innerHTML = "Submit";
+          setTimeout(() => {
+            errorAlertRef.style.display = "none";
+            errorAlertRef.innerHTML = "";
+          }, 5000);
+        });
+    };
   </script>
 </html>
